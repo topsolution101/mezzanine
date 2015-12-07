@@ -63,25 +63,30 @@ jQuery(function($) {
     if (typeof tinyMCE != 'undefined') {
 
         tinyMCE.init({
-            selector: "textarea.mceEditor",
-            height: '500px',
-            language: language_codes[window.__language_code] || 'en',
-            plugins: [
-                "advlist autolink lists link image charmap print preview anchor",
-                "searchreplace visualblocks code fullscreen",
-                "insertdatetime media table contextmenu paste"
-            ],
-            link_list: '/displayable_links.js',
-            relative_urls: false,
-            convert_urls: false,
-            menubar: false,
-            statusbar: false,
-            toolbar: ("insertfile undo redo | styleselect | bold italic | " +
-                      "alignleft aligncenter alignright alignjustify | " +
-                      "bullist numlist outdent indent | link image table | " +
-                      "code fullscreen"),
-            file_browser_callback: custom_file_browser,
-            content_css: window.__tinymce_css
+        	    selector: "textarea.mceEditor",  
+    			 language: "zh_TW",
+             fontsize_formats: "8pt 10pt 12pt 26pt 36pt 48pt 62pt 70pt",
+             theme: "modern",
+             width: "100%",
+             height: "600",
+             plugins: [
+               "advlist autolink link image  lists charmap print preview hr anchor pagebreak spellchecker",
+                "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                "save table contextmenu directionality emoticons template paste textcolor"
+             ],
+
+             toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons | fontselect | fontsizeselect",
+             setup: function(ed) {
+               ed.on('init', function() {
+                 this.getDoc().body.style.fontSize = '12px'; 
+               });
+             },
+ 
+             file_browser_callback: function(field_name, url, type, win) {
+               if(type=='image') {     	
+                 $('#selectFile').click();
+               }
+             }
         });
 
     }
