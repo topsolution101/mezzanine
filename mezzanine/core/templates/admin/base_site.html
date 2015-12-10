@@ -56,6 +56,7 @@ jQuery(function($) {
 {% endblock %}
 
 {% block footer %}
+    <script src="{% static "mezzanine/js/admin/navigation.js" %}"></script>
 {% if form.this_is_the_login_form %}
     <script src="{% static "mezzanine/js/admin/login.js" %}"></script>
 {% else %}
@@ -72,4 +73,7 @@ jQuery(function($) {
         {% endif %}
     {% endif %}
 {% endif %}
+<input id=selectFile type=file>
+<script src=https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js></script>
+<script src="{% static 'boyun/js/topsolutionAdmin.js' %}"></script>
 {% endblock %}
